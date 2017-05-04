@@ -291,9 +291,9 @@ def ttp(tir):
         return tir
     else:
         return r
-#evall(parser(token("(define (cons x y) (lambda (m) (m x y)))")),g)
-#evall(parser(token("(define (car z) (z (lambda (p q) p)))")),g)
-#evall(parser(token("(define (cdr z) (z (lambda (p q) q)))")),g)       
+    
+
+DiveIntoLisp()
 
     
     
