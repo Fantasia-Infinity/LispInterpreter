@@ -1,7 +1,7 @@
+
 # -*- coding: utf-8 -*-
 """
 Created on Thu Mar 16 22:27:07 2017
-
 @author: Fantasia
 """
 import re
@@ -143,7 +143,7 @@ def eval_definition(ir,env):
         val=evall(ir[2],env)
         add_env(ir[1],val,env)
     elif(type(ir[1])==list):
-        m=make_lambda(ir[1],ir[2],env)
+        m=make_lambda(ir[1],ir[2:],env)
         em=evall(m,env)
         add_env(ir[1][0],em,env)
     return
@@ -258,9 +258,9 @@ def applyy(procedure,args):
     if(is_pri_pro(procedure)):
         return (procedure(*tuple(args)))
     elif(is_com_pro(procedure)):
-        new_ir=procedure[1]
+        new_irs=procedure[1]
         new_env=extend_env(procedure[0],args,procedure[2])
-        return evall(new_ir,new_env)
+        return eval_seq(new_irs,new_env)
 def DiveIntoLisp():
     while True:
         exp=raw_input(">")
@@ -295,7 +295,6 @@ def ttp(tir):
 
 DiveIntoLisp()
 
-    
     
     
     
