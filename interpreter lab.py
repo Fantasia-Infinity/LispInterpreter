@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 """
 Created on Thu Mar 16 22:27:07 2017
@@ -148,7 +147,7 @@ def eval_definition(ir,env):
         add_env(ir[1][0],em,env)
     return
 def make_lambda(s,body,env):
-    return ['lambda',s[1:],body]
+    return ['lambda',s[1:]]+body
 def look_up(var,env):
     if(env==[]):
         print "No found"
@@ -161,7 +160,7 @@ def is_variable(ir):
 def is_lambda(ir):
     return (ir[0]=="lambda")
 def make_procedure(lambda_ir,env):
-    return [lambda_ir[1],lambda_ir[2],env] 
+    return [lambda_ir[1],lambda_ir[2:],env] 
 def is_pri_pro(procedure):
     return (not is_com_pro(procedure))
 def is_com_pro(procedure):
@@ -294,8 +293,3 @@ def ttp(tir):
     
 
 DiveIntoLisp()
-
-    
-    
-    
-    
