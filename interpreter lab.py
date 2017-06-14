@@ -290,6 +290,24 @@ def ttp(tir):
         return tir
     else:
         return r
+def evalls(exps):
+    if len(exps)==0:
+        pass
+    elif exps[0]==' ':
+        return evalls(exps[1:])
+    elif exps[0]=='(':
+        i=findp(exps,0)
+        firstexp=exps[0:i]
+        restexps=exps[i+1:]
+        if evall(parser(token(firstexp)),g)==None:
+            print "ok"
+        else: 
+            print evall(parser(token(firstexp)),g)
+        return evalls(restexps)
+    
+evalls("(define tas (lambda (x) (+ x 1))) (tas 1) (tas 3)")
+evalls("(define (has x y) (set! x (+ x 1)) (+ x y))(has 1 1)")
+evalls("(define das (lambda (x y) (+ x y))) (das 3 3)")
     
 
 DiveIntoLisp()
