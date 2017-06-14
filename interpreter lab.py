@@ -290,7 +290,7 @@ def ttp(tir):
         return tir
     else:
         return r
-def evalls(exps):
+def evalls(exps):#预先求值一连串表达式
     if len(exps)==0:
         pass
     elif exps[0]==' ':
