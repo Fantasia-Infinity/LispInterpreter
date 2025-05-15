@@ -150,7 +150,7 @@ def make_lambda(s,body,env):
     return ['lambda',s[1:]]+body
 def look_up(var,env):
     if(env==[]):
-        print "No found"
+        print("No found")
     elif(var in env[0]):
         return env[0][var]
     else:
@@ -262,17 +262,17 @@ def applyy(procedure,args):
         return eval_seq(new_irs,new_env)
 def DiveIntoLisp():
     while True:
-        exp=raw_input(">")
+        exp=input(">")
         if(exp=='Awake'):
             return
         exp=parser(token(exp))
         output=evall(exp,g)
         if(output is None):
-            print 'ok'
+            print('ok')
         elif(type(output)==tuple):#lisp中列表和quote的内部表示为tuple，但在显示的时候转换成lisp表示中相应的字符串
-            print ttp(output)
+            print(ttp(output))
         else:
-            print output
+            print(output)
 def tuple_to_lisp(tir):
     if type(tir) != tuple:
         return str(tir)+' '#显示的时候各种类型的值都变成字符串来显示
@@ -300,9 +300,9 @@ def evalls(exps):#预先求值一连串表达式
         firstexp=exps[0:i]
         restexps=exps[i+1:]
         if evall(parser(token(firstexp)),g)==None:
-            print "ok"
+            print("ok")
         else: 
-            print evall(parser(token(firstexp)),g)
+            print(evall(parser(token(firstexp)),g))
         return evalls(restexps)
     
 evalls("(define tas (lambda (x) (+ x 1))) (tas 1) (tas 3)")
